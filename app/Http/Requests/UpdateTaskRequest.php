@@ -2,7 +2,10 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
+use function App\apiResponse;
 
 class UpdateTaskRequest extends FormRequest
 {
@@ -29,5 +32,12 @@ class UpdateTaskRequest extends FormRequest
             'assign_to' => 'nullable|exists:users,id',
             'image' => 'nullable|mimes:jpg,jpeg,png,gif,webp|max:2048'
         ];
+    }
+
+    protected function failedValidation(Validator $validator)
+    {
+        throw new HttpResponseException(
+            apiResponse(422, $validator->errors(), 'Validation Failed')
+        );
     }
 }
