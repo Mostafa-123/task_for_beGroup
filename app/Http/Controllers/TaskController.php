@@ -30,7 +30,7 @@ class TaskController extends Controller
     {
         $perPage = $request->header('perPage', 10);
         $limit = max(1, min($perPage, 50));
-        $tasks = Task::orderBy('created_at', 'DESC')->with(['user_assign.assign_tasks', 'user_create.created_tasks'])->paginate($limit);
+        $tasks = Task::orderBy('id', 'DESC')->with(['user_assign.assign_tasks', 'user_create.created_tasks'])->paginate($limit);
 
         if ($tasks->isEmpty()) {
             return apiResponse(
@@ -126,7 +126,7 @@ class TaskController extends Controller
             return apiResponse(401, [], 'Unauthorized');
         }
 
-        $tasks = $user->created_tasks()->whereNull('deleted_at')->with(['user_assign.assign_tasks', 'user_create.created_tasks'])->paginate($limit);
+        $tasks = $user->created_tasks()->whereNull('deleted_at')->with(['user_assign.assign_tasks', 'user_create.created_tasks'])->orderBy('id','DESC')->paginate($limit);
         if ($tasks->isEmpty()) {
             return apiResponse(201, [], "there are no created tasks for now");
         }
@@ -143,7 +143,7 @@ class TaskController extends Controller
             return apiResponse(401, [], 'Unauthorized');
         }
 
-        $tasks = $user->assign_tasks()->whereNull('deleted_at')->with(['user_assign.assign_tasks', 'user_create.created_tasks'])->paginate($limit);
+        $tasks = $user->assign_tasks()->whereNull('deleted_at')->with(['user_assign.assign_tasks', 'user_create.created_tasks'])->orderBy('id','DESC')->paginate($limit);
 
         if ($tasks->isEmpty()) {
             return apiResponse(201, [], "there are no assined tasks for now");
@@ -162,7 +162,7 @@ class TaskController extends Controller
             return apiResponse(401, [], 'Unauthorized');
         }
 
-        $tasks = $user->created_tasks()->onlyTrashed()->with(['user_assign.assign_tasks', 'user_create.created_tasks'])->paginate($limit);
+        $tasks = $user->created_tasks()->onlyTrashed()->with(['user_assign.assign_tasks', 'user_create.created_tasks'])->orderBy('id','DESC')->paginate($limit);
         if ($tasks->isEmpty()) {
             return apiResponse(201, [], "there are no deleted tasks for now");
         }
