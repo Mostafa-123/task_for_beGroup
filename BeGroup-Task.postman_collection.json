@@ -112,7 +112,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "1|jf9fXPS0nkpDVD33oyF3ncUme2KG1tcgofe42JjObaf844bf",
+									"value": "2|82cb13yg8YgZTNkUeQdmf4MJ7vl5WjA1c04maypke67e9572",
 									"type": "string"
 								}
 							]
@@ -150,7 +150,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "1|",
+									"value": "2|82cb13yg8YgZTNkUeQdmf4MJ7vl5WjA1c04maypke67e9572",
 									"type": "string"
 								}
 							]
@@ -518,7 +518,8 @@
 								{
 									"key": "assign_to",
 									"value": "1",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "image",
