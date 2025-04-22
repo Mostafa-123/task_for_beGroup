@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "fcb1a9d5-6fc3-49a0-8b13-9e227cb89c27",
 		"name": "BeGroup-Task",
-		"description": "# 🚀 Get started here\n\nThis template guides you through CRUD operations (GET, POST, PUT, DELETE), variables, and tests.\n\n## 🔖 **How to use this template**\n\n#### **Step 1: Send requests**\n\nRESTful APIs allow you to perform CRUD operations using the POST, GET, PUT, and DELETE HTTP methods.\n\nThis collection contains each of these [request](https://learning.postman.com/docs/sending-requests/requests/) types. Open each request and click \"Send\" to see what happens.\n\n#### **Step 2: View responses**\n\nObserve the response tab for status code (200 OK), response time, and size.\n\n#### **Step 3: Send new Body data**\n\nUpdate or add new data in \"Body\" in the POST request. Typically, Body data is also used in PUT request.\n\n```\n{\n    \"name\": \"Add your name in the body\"\n}\n\n ```\n\n#### **Step 4: Update the variable**\n\nVariables enable you to store and reuse values in Postman. We have created a [variable](https://learning.postman.com/docs/sending-requests/variables/) called `base_url` with the sample request [https://postman-api-learner.glitch.me](https://postman-api-learner.glitch.me). Replace it with your API endpoint to customize this collection.\n\n#### **Step 5: Add tests in the \"Scripts\" tab**\n\nAdding tests to your requests can help you confirm that your API is working as expected. You can write test scripts in JavaScript and view the output in the \"Test Results\" tab.\n\n<img src=\"https://content.pstmn.io/fa30ea0a-373d-4545-a668-e7b283cca343/aW1hZ2UucG5n\" alt=\"\" height=\"1530\" width=\"2162\">\n\n## 💪 Pro tips\n\n- Use folders to group related requests and organize the collection.\n    \n- Add more [scripts](https://learning.postman.com/docs/writing-scripts/intro-to-scripts/) to verify if the API works as expected and execute workflows.\n    \n\n## 💡Related templates\n\n[API testing basics](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9a37a28-055b-49cd-8c7e-97494a21eb54&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[API documentation](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9c28f47-1253-44af-a2f3-20dce4da1f18&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[Authorization methods](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=31a9a6ed-4cdf-4ced-984c-d12c9aec1c27&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)",
+		"description": "# 🚀 Get started here\n\nThis template guides you through CRUD operations (GET, POST, PUT, DELETE), variables, and tests.\n\n## 🔖 **How to use this template**\n\n#### **Step 1: Send requests**\n\nRESTful APIs allow you to perform CRUD operations using the POST, GET, PUT, and DELETE HTTP methods.\n\nThis collection contains each of these [request](https://learning.postman.com/docs/sending-requests/requests/) types. Open each request and click \"Send\" to see what happens.\n\n#### **Step 2: View responses**\n\nObserve the response tab for status code (200 OK), response time, and size.\n\n#### **Step 3: Send new Body data**\n\nUpdate or add new data in \"Body\" in the POST request. Typically, Body data is also used in PUT request.\n\n```\n{\n    \"name\": \"Add your name in the body\"\n}\n\n ```\n\n#### **Step 4: Update the variable**\n\nVariables enable you to store and reuse values in Postman. We have created a [variable](https://learning.postman.com/docs/sending-requests/variables/) called `base_url` with the sample request [https://postman-api-learner.glitch.me](https://postman-api-learner.glitch.me). Replace it with your API endpoint to customize this collection.\n\n#### **Step 5: Add tests in the \"Scripts\" tab**\n\nAdding tests to your requests can help you confirm that your API is working as expected. You can write test scripts in JavaScript and view the output in the \"Test Results\" tab.\n\n<img src=\"https://content.pstmn.io/fa30ea0a-373d-4545-a668-e7b283cca343/aW1hZ2UucG5n\" width=\"2162\" height=\"1530\">\n\n## 💪 Pro tips\n\n- Use folders to group related requests and organize the collection.\n    \n- Add more [scripts](https://learning.postman.com/docs/writing-scripts/intro-to-scripts/) to verify if the API works as expected and execute workflows.\n    \n\n## 💡Related templates\n\n[API testing basics](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9a37a28-055b-49cd-8c7e-97494a21eb54&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[API documentation](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9c28f47-1253-44af-a2f3-20dce4da1f18&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[Authorization methods](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=31a9a6ed-4cdf-4ced-984c-d12c9aec1c27&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "27272797"
 	},
@@ -189,7 +189,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "2|rSwbYDjv2zsZQPySbStOAPAI5eJyR3TN0r4VlipRe8ed2863",
+									"value": "1|KHBkaTGFe6Y743SZPHE8uUNsmaHFWthI0gVqbRCg813fb0d2",
 									"type": "string"
 								}
 							]
@@ -203,7 +203,7 @@
 							},
 							{
 								"key": "perPage",
-								"value": "5",
+								"value": "2",
 								"type": "text"
 							}
 						],
@@ -228,7 +228,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "2|rSwbYDjv2zsZQPySbStOAPAI5eJyR3TN0r4VlipRe8ed2863",
+									"value": "1|KHBkaTGFe6Y743SZPHE8uUNsmaHFWthI0gVqbRCg813fb0d2",
 									"type": "string"
 								}
 							]
@@ -242,13 +242,86 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/api/tasks/51",
+							"raw": "{{url}}/api/tasks/50",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
 								"tasks",
+								"50"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "assign task to user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "1|KHBkaTGFe6Y743SZPHE8uUNsmaHFWthI0gVqbRCg813fb0d2",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/tasks/assign/1/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"tasks",
+								"assign",
+								"1",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "restore task",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "1|KHBkaTGFe6Y743SZPHE8uUNsmaHFWthI0gVqbRCg813fb0d2",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/tasks/restore/51",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"tasks",
+								"restore",
 								"51"
 							]
 						}
@@ -263,7 +336,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "2|rSwbYDjv2zsZQPySbStOAPAI5eJyR3TN0r4VlipRe8ed2863",
+									"value": "1|KHBkaTGFe6Y743SZPHE8uUNsmaHFWthI0gVqbRCg813fb0d2",
 									"type": "string"
 								}
 							]
@@ -298,7 +371,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "2|rSwbYDjv2zsZQPySbStOAPAI5eJyR3TN0r4VlipRe8ed2863",
+									"value": "1|KHBkaTGFe6Y743SZPHE8uUNsmaHFWthI0gVqbRCg813fb0d2",
 									"type": "string"
 								}
 							]
@@ -334,7 +407,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "2|rSwbYDjv2zsZQPySbStOAPAI5eJyR3TN0r4VlipRe8ed2863",
+									"value": "1|KHBkaTGFe6Y743SZPHE8uUNsmaHFWthI0gVqbRCg813fb0d2",
 									"type": "string"
 								}
 							]
@@ -363,6 +436,42 @@
 					"response": []
 				},
 				{
+					"name": "get user deleted tasks",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "1|KHBkaTGFe6Y743SZPHE8uUNsmaHFWthI0gVqbRCg813fb0d2",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/tasks/user/deleted",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"tasks",
+								"user",
+								"deleted"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "create task",
 					"request": {
 						"auth": {
@@ -370,7 +479,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "2|rSwbYDjv2zsZQPySbStOAPAI5eJyR3TN0r4VlipRe8ed2863",
+									"value": "1|KHBkaTGFe6Y743SZPHE8uUNsmaHFWthI0gVqbRCg813fb0d2",
 									"type": "string"
 								}
 							]
@@ -414,7 +523,7 @@
 								{
 									"key": "image",
 									"type": "file",
-									"src": "/C:/Users/Mostafa/Downloads/11.jpg"
+									"src": "/C:/Users/Mostafa/Downloads/10.jpg"
 								}
 							]
 						},
@@ -439,12 +548,12 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "3|2GvHLfjvrZi9kuEP0cGH05xy5W04L1PlAIl1SrnMde5a4ad1",
+									"value": "1|KHBkaTGFe6Y743SZPHE8uUNsmaHFWthI0gVqbRCg813fb0d2",
 									"type": "string"
 								}
 							]
 						},
-						"method": "PATCH",
+						"method": "PUT",
 						"header": [
 							{
 								"key": "accept",
@@ -454,7 +563,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"status\" :\"ccc\"\r\n}",
+							"raw": "{\r\n    \"status\" :\"in_progress\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -462,14 +571,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/tasks/51",
+							"raw": "{{url}}/api/tasks/49",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
 								"tasks",
-								"51"
+								"49"
 							]
 						}
 					},

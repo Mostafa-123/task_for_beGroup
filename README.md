@@ -18,10 +18,10 @@ A RESTful API built with Laravel 10.x for managing tasks with full CRUD , file u
 
 ## ⚙️ Requirements
 
-- PHP >= 8.1
+- PHP >= 8.2
 - Composer
 - Laravel 10.x
-- MySQL / PostgreSQL
+- MySQL 
 - Laravel Sanctum
 
 ---
@@ -29,8 +29,7 @@ A RESTful API built with Laravel 10.x for managing tasks with full CRUD , file u
 ## 🚀 Installation & Setup
 
 ```bash
-git clone https://github.com/your-username/task-api.git
-cd task-api
+git clone https://github.com/Mostafa-123/task_for_beGroup
 composer install
 cp .env.example .env
 php artisan key:generate
@@ -57,6 +56,10 @@ PATCH | /tasks/{id} | Partially update a task
 DELETE | /tasks/{id} | Soft delete a task
 GET | /tasks/user/created | Tasks created by authenticated user
 GET | /tasks/user/assigned | Tasks assigned to authenticated user
+GET | /tasks/user/deleted | Tasks deleted to authenticated user
+GET | /tasks/restore/{id} | Restore a task
+GET | /tasks/assign/{task_id}/{user_id} | Assign task to a user
+
 
 🧾 Example API Response
 GET | /tasks/{id} | Get single task by ID

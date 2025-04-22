@@ -6,6 +6,7 @@ use App\Http\Requests\CreateTaskRequest;
 use App\Http\Requests\UpdateTaskRequest;
 use App\Http\Resources\TaskResource;
 use App\Models\Task;
+use App\Models\User;
 use App\Services\TaskService;
 use App\Traits\ManageFileTrait;
 use Exception;
@@ -33,7 +34,7 @@ class TaskController extends Controller
 
         if ($tasks->isEmpty()) {
             return apiResponse(
-                200,
+                201,
                 [],
                 'Sorry! But No Tasks For Now'
             );
@@ -111,7 +112,7 @@ class TaskController extends Controller
         }
 
         $this->taskService->deleteTask($task);
-        return apiResponse(204, [], "Task deleted successfully");
+        return apiResponse(201, [], "Task deleted successfully");
     }
 
 
@@ -127,7 +128,7 @@ class TaskController extends Controller
 
         $tasks = $user->created_tasks()->whereNull('deleted_at')->with(['user_assign.assign_tasks', 'user_create.created_tasks'])->paginate($limit);
         if ($tasks->isEmpty()) {
-            return apiResponse(204, [], "there are no created tasks for now");
+            return apiResponse(201, [], "there are no created tasks for now");
         }
 
         return apiResponse(200, TaskResource::collection($tasks)->response()->getData(true), "Created tasks");
@@ -145,10 +146,71 @@ class TaskController extends Controller
         $tasks = $user->assign_tasks()->whereNull('deleted_at')->with(['user_assign.assign_tasks', 'user_create.created_tasks'])->paginate($limit);
 
         if ($tasks->isEmpty()) {
-            return apiResponse(204, [], "there are no assined tasks for now");
+            return apiResponse(201, [], "there are no assined tasks for now");
         }
         return apiResponse(200, TaskResource::collection($tasks)->response()->getData(true), "Assigned tasks");
     }
 
+
+    public function user_deleted_tasks(Request $request)
+    {
+
+        $user = auth('sanctum')->user();
+        $perPage = $request->header('perPage', 10);
+        $limit = max(1, min($perPage, 50));
+        if (!$user) {
+            return apiResponse(401, [], 'Unauthorized');
+        }
+
+        $tasks = $user->created_tasks()->onlyTrashed()->with(['user_assign.assign_tasks', 'user_create.created_tasks'])->paginate($limit);
+        if ($tasks->isEmpty()) {
+            return apiResponse(201, [], "there are no deleted tasks for now");
+        }
+
+        return apiResponse(200, TaskResource::collection($tasks)->response()->getData(true), "deleted tasks");
+
+    }
+
+    public function restore_user_task($id){
+        $task=Task::onlyTrashed()->find($id);
+
+        if (!$task) {
+            return apiResponse(404, [], "Sorry! But No Task Found With That Id");
+        }
+        if ($task->created_by !== auth('sanctum')->user()->id) {
+            return apiResponse(401, [], "Unauthorized Action");
+        }
+
+        $task->restore();
+        $task->load(['user_assign.assign_tasks', 'user_create.created_tasks']);
+        return apiResponse(
+            200,
+            new TaskResource($task),
+            'Task Restored Successfully'
+        );
+    }
+
+    public function assig_task_to_user($task_id,$user_id){
+        $task=Task::find($task_id);
+        $user=User::find($user_id);
+
+        if (!$task) {
+            return apiResponse(404, [], "Sorry! But No Task Found With That Id");
+        }
+
+        if (!$user) {
+            return apiResponse(404, [], "Sorry! But No User Found With That Id");
+        }
+
+        if ($task->created_by !== auth('sanctum')->user()->id) {
+            return apiResponse(401, [], "Unauthorized Action");
+        }
+
+        return apiResponse(201, new TaskResource($this->taskService->assign_task_to_user($task,$user)), "Task assigned successfully");
+
+
+
+
+    }
 
 }

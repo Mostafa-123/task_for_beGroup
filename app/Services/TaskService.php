@@ -2,6 +2,7 @@
 namespace App\Services;
 
 use App\Models\Task;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use App\Traits\ManageFileTrait;
 use Exception;
@@ -69,6 +70,14 @@ class TaskService
         if ($task->image) {
             $this->deleteFile($task->image);
         }
+        $task->image=null;
+        $task->save();
         return $task->delete();
+    }
+
+    public function assign_task_to_user(Task $task,User $user){
+        $task->assign_to=$user->id;
+        $task->save();
+        return $task;
     }
 }

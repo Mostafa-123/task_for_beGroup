@@ -48,6 +48,12 @@ Route::middleware('auth:sanctum')->prefix('tasks')->controller(TaskController::c
 
     Route::get('/user/assigned','user_assigned_tasks');
 
+    Route::get('/user/deleted','user_deleted_tasks');
+
+    Route::get('/restore/{id}',  'restore_user_task');
+
+    Route::get('/assign/{task_id}/{user_id}',  'assig_task_to_user');
+
 });
 
 
