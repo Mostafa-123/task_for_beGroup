@@ -29,7 +29,7 @@ class TaskController extends Controller
     {
         $perPage = $request->header('perPage', 10);
         $limit = max(1, min($perPage, 50));
-        $tasks = Task::orderBy('created_at', 'DESC')->paginate($limit);
+        $tasks = Task::orderBy('created_at', 'DESC')->with(['user_assign.assign_tasks', 'user_create.created_tasks'])->paginate($limit);
 
         if ($tasks->isEmpty()) {
             return apiResponse(
@@ -47,7 +47,7 @@ class TaskController extends Controller
     }
     public function get($id)
     {
-        $task = Task::where('deleted_at', null)->find($id);
+        $task = Task::where('deleted_at', null)->with(['user_assign.assign_tasks', 'user_create.created_tasks'])->find($id);
         ;
         if (!$task) {
             return apiResponse(
@@ -68,6 +68,7 @@ class TaskController extends Controller
     {
         try {
             $task = $this->taskService->createTask($request, auth('sanctum')->user());
+            $task->load(['user_assign.assign_tasks', 'user_create.created_tasks']);
             return apiResponse(200, new TaskResource($task), "Task created successfully");
         } catch (\Exception $e) {
             return apiResponse(500, [], $e->getMessage());
@@ -76,7 +77,7 @@ class TaskController extends Controller
 
     public function update(UpdateTaskRequest $request, $id)
     {
-        $task = Task::whereNull('deleted_at')->find($id);
+        $task = Task::whereNull('deleted_at')->with(['user_assign.assign_tasks', 'user_create.created_tasks'])->find($id);
 
         if (!$task) {
             return apiResponse(404, [], 'Sorry! But No Task Found With That Id');
@@ -99,7 +100,7 @@ class TaskController extends Controller
 
     public function delete($id)
     {
-        $task = Task::whereNull('deleted_at')->find($id);
+        $task = Task::with(['user_assign.assign_tasks', 'user_create.created_tasks'])->whereNull('deleted_at')->find($id);
 
         if (!$task) {
             return apiResponse(404, [], "Sorry! But No Task Found With That Id");
@@ -124,12 +125,12 @@ class TaskController extends Controller
             return apiResponse(401, [], 'Unauthorized');
         }
 
-        $tasks = $user->created_tasks()->whereNull('deleted_at')->paginate($limit);
+        $tasks = $user->created_tasks()->whereNull('deleted_at')->with(['user_assign.assign_tasks', 'user_create.created_tasks'])->paginate($limit);
         if ($tasks->isEmpty()) {
             return apiResponse(200, [], "there are no created tasks for now");
         }
 
-        return apiResponse(200, TaskResource::collection($tasks), "Created tasks");
+        return apiResponse(200, TaskResource::collection($tasks)->response()->getData(true), "Created tasks");
     }
 
     public function user_assigned_tasks(Request $request)
@@ -141,12 +142,12 @@ class TaskController extends Controller
             return apiResponse(401, [], 'Unauthorized');
         }
 
-        $tasks = $user->assign_tasks()->whereNull('deleted_at')->paginate($limit);
+        $tasks = $user->assign_tasks()->whereNull('deleted_at')->with(['user_assign.assign_tasks', 'user_create.created_tasks'])->paginate($limit);
 
         if ($tasks->isEmpty()) {
             return apiResponse(200, [], "there are no assined tasks for now");
         }
-        return apiResponse(200, TaskResource::collection($tasks), "Assigned tasks");
+        return apiResponse(200, TaskResource::collection($tasks)->response()->getData(true), "Assigned tasks");
     }
 
 
