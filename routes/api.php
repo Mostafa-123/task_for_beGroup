@@ -52,5 +52,5 @@ Route::middleware('auth:sanctum')->prefix('tasks')->controller(TaskController::c
 
 
 Route::any('{url}', function () {
-    return apiResponse(401, "", "this url not found check parmater");
+    return apiResponse(404, "", "this url not found check parmater");
 })->where('url', '.*')->middleware('api');

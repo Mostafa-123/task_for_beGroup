@@ -18,17 +18,17 @@ class UserResource extends JsonResource
             'email' => $this->email,
             'phone' => $this->phone,
             'image' => $this->image ? $this->getFileUrl($this->image) : null,
-            'created_tasks' => TaskResource::collection(
-                $this->whenLoaded('created_tasks', function () {
-                    return $this->created_tasks->whereNull('deleted_at');
-                }, [])
-            ),
+            // 'created_tasks' => TaskResource::collection(
+            //     $this->whenLoaded('created_tasks', function () {
+            //         return $this->created_tasks->whereNull('deleted_at');
+            //     }, [])
+            // ),
 
-            'assign_tasks' => TaskResource::collection(
-                $this->whenLoaded('assign_tasks', function () {
-                    return $this->assign_tasks->whereNull('deleted_at');
-                }, [])
-            ),
+            // 'assign_tasks' => TaskResource::collection(
+            //     $this->whenLoaded('assign_tasks', function () {
+            //         return $this->assign_tasks->whereNull('deleted_at');
+            //     }, [])
+            // ),
         ];
     }
 }

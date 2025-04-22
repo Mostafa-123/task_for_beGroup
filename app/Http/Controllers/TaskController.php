@@ -69,7 +69,7 @@ class TaskController extends Controller
         try {
             $task = $this->taskService->createTask($request, auth('sanctum')->user());
             $task->load(['user_assign.assign_tasks', 'user_create.created_tasks']);
-            return apiResponse(200, new TaskResource($task), "Task created successfully");
+            return apiResponse(201, new TaskResource($task), "Task created successfully");
         } catch (\Exception $e) {
             return apiResponse(500, [], $e->getMessage());
         }
@@ -89,7 +89,7 @@ class TaskController extends Controller
 
         try {
             $updatedTask = $this->taskService->updateTask($task, $request);
-            return apiResponse(200, new TaskResource($updatedTask), "Task updated successfully");
+            return apiResponse(201, new TaskResource($updatedTask), "Task updated successfully");
         } catch (\Exception $e) {
             return apiResponse(500, [], $e->getMessage());
         }
@@ -111,7 +111,7 @@ class TaskController extends Controller
         }
 
         $this->taskService->deleteTask($task);
-        return apiResponse(200, [], "Task deleted successfully");
+        return apiResponse(204, [], "Task deleted successfully");
     }
 
 
@@ -127,7 +127,7 @@ class TaskController extends Controller
 
         $tasks = $user->created_tasks()->whereNull('deleted_at')->with(['user_assign.assign_tasks', 'user_create.created_tasks'])->paginate($limit);
         if ($tasks->isEmpty()) {
-            return apiResponse(200, [], "there are no created tasks for now");
+            return apiResponse(204, [], "there are no created tasks for now");
         }
 
         return apiResponse(200, TaskResource::collection($tasks)->response()->getData(true), "Created tasks");
@@ -145,7 +145,7 @@ class TaskController extends Controller
         $tasks = $user->assign_tasks()->whereNull('deleted_at')->with(['user_assign.assign_tasks', 'user_create.created_tasks'])->paginate($limit);
 
         if ($tasks->isEmpty()) {
-            return apiResponse(200, [], "there are no assined tasks for now");
+            return apiResponse(204, [], "there are no assined tasks for now");
         }
         return apiResponse(200, TaskResource::collection($tasks)->response()->getData(true), "Assigned tasks");
     }
