@@ -12,7 +12,7 @@ use Tests\TestCase;
 
 class TaskServiceTest extends TestCase
 {
-    use RefreshDatabase;
+    //use RefreshDatabase;
 
     protected TaskService $service;
 
